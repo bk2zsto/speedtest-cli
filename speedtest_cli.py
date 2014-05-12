@@ -471,9 +471,10 @@ def speedtest():
     parser.add_argument('--version', action='store_true',
                         help='Show the version number and exit')
 
+    ### must be in same dir as speedtest_cli.py (dynamic import is hard)
     parser.add_argument('--resultlog', action='store',
-                        help='Module name to use for result logging',
-                        default=None, metavar='path.to.module')
+                        help='Module name to use for result logging' ,
+                        default=None, metavar='module')
 
     options = parser.parse_args()
 
