@@ -675,7 +675,8 @@ def speedtest():
         logmodule = None
         try:
             found = imp.find_module(args.resultlog)
-            logmodule = imp.load_module(args.resultlog, found)
+            logmodule = imp.load_module(args.resultlog, found[0],
+                                        found[1], found[2])
         except ImportError:
             print_('Log module (%s) failed. Not logging.' % args.resultlog),
             sys.exit(1)
