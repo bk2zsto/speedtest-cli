@@ -681,8 +681,13 @@ def speedtest():
             print_('Log module (%s) failed. Not logging.' % args.resultlog),
             sys.exit(1)
 
-        result = {'dlspeed': dlspeed, 'ulspeed': ulspeed}
-        log = logmodule.logger(config, best, result)
+        result = {
+            'dlspeed' : dlspeed,
+            'dlmbits' : dlspeed/125000,
+            'ulspeed' : ulspeed,
+            'ulmbits' : ulspeed/125000,
+        }
+        log = logmodule.ResultLogger(config, best, result)
         log.logresult()
 
 
