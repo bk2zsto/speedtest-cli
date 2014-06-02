@@ -6,6 +6,7 @@ import urllib
 import datetime
 import socket
 import re
+import os
 
 class StatelessHTTPHandler(logging.handlers.HTTPHandler):
   def mapLogRecord(self,record):
