@@ -37,7 +37,7 @@ class ResultLogger():
   def __init__(self, testconfig=None, bestserver=None, testresult=None):
     self._logger = logging.getLogger()
     
-    self._logconfig = logging.config.fileConfig(re.sub('\.py$','.ini',os.path.abspath(__file__)))
+    self._logconfig = logging.config.fileConfig(re.sub('\.pyc*$','.ini',os.path.abspath(__file__)))
     
     self.testconfig = {}
     if (testconfig): self.testconfig = testconfig
@@ -56,19 +56,19 @@ class ResultLogger():
 
     for k in ['dlspeed','dlmbits','ulspeed','ulmbits']:
       try:
-        logquery[k] = self.result[k]
+        logquery[k] = self.testresult[k]
       except KeyError as e:
         pass
 
     for k in ['host','name','sponsor','id']:
       try:
-        logquery['dst' + k] = self.best[k]
+        logquery['dst' + k] = self.bestserver[k]
       except KeyError:
         pass
 
     for k in ['ip','isp']:
       try:
-        logquery['wan' + k] = self.config['client'][k]
+        logquery['wan' + k] = self.testconfig['client'][k]
       except KeyError as e:
         pass
 
