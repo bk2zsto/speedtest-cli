@@ -683,9 +683,9 @@ def speedtest():
 
         result = {
             'dlspeed' : dlspeed,
-            'dlmbits' : "%.2f" % dlspeed/125000,
+            'dlmbits' : "%.2f" % float(float(dlspeed)/125000),
             'ulspeed' : ulspeed,
-            'ulmbits' : "%.2f" % ulspeed/125000,
+            'ulmbits' : "%.2f" % float(float(ulspeed)/125000),
         }
         log = logmodule.ResultLogger(config, best, result)
         log.logresult()
