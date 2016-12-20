@@ -674,6 +674,12 @@ class SpeedtestResults(object):
                 'indent': 4,
                 'sort_keys': True
             })
+
+        d = self.dict()["server"]
+        if "url" in d: d.pop("url")
+        if "url2" in d: d.pop("url2")
+        if not("host" in d) and "name" in d: d["host"] = d.pop("name")
+
         return json.dumps(self.dict(), **kwargs)
 
 
